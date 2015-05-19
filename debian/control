@@ -1,0 +1,40 @@
+Source: mayavi2
+Section: science
+Priority: optional
+Maintainer: Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>
+Uploaders: Varun Hiremath <varun@debian.org>
+Build-Depends: debhelper (>= 7.0.50~), python-all-dev (>= 2.6.6-3~),
+ python-setuptools, python-setupdocs, python-vtk6, python-numpy (>= 1:1.4.1-4~)
+Standards-Version: 3.9.5
+X-Python-Version: 2.7
+Homepage: http://code.enthought.com/projects/mayavi/
+Vcs-Svn: svn://anonscm.debian.org/python-apps/packages/mayavi2/trunk/
+Vcs-Browser: http://anonscm.debian.org/viewvc/python-apps/packages/mayavi2/trunk/
+
+Package: mayavi2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
+ python-traits, python-traitsui, python-wxgtk3.0, python-numpy,
+ python-vtk6, python-pkg-resources, python-envisage,
+ python-apptools (>= 4.0.0-1), libjs-jquery, python-configobj
+Suggests: python-scipy, ipython
+Description: scientific visualization package for 2-D and 3-D data
+ MayaVi2 is a cross-platform tool for 2-D and 3-D scientific data
+ visualization.  Its features include:
+   * Visualization of scalar, vector and tensor data in 2 and 3 dimensions
+   * Easy scriptability using Python
+   * Easy extendability via custom sources, modules, and data filters
+   * Reading several file formats: VTK (legacy and XML), PLOT3D, etc.
+   * Saving of visualizations
+   * Saving rendered visualization in a variety of image formats.
+ .
+ MayaVi2 has been designed with scriptability and extensibility in
+ mind.  While the mayavi2 application is usable by itself, it may be
+ used as an Envisage plugin which allows it to be embedded in user
+ applications natively.  Alternatively, it may be used as a
+ visualization engine for any application.
+ .
+ This package also provides TVTK, which wraps VTK objects to provide a
+ convenient, Pythonic API, while supporting Traits attributes and
+ NumPy/SciPy arrays. TVTK is implemented mostly in pure Python, except
+ for a small extension module.

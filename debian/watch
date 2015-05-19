@@ -1,0 +1,5 @@
+version=3
+opts="uversionmangle=s/([ab])/~$1/,dversionmangle=s/\+.*//" \
+http://pypi.python.org/pypi/mayavi .*mayavi-(.*).tar.gz \
+debian debian/orig-tar.sh
+

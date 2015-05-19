@@ -1,0 +1,13 @@
+Index: mayavi2-4.3.1/mayavi/tests/README.txt
+===================================================================
+--- mayavi2-4.3.1.orig/mayavi/tests/README.txt
++++ mayavi2-4.3.1/mayavi/tests/README.txt
+@@ -47,7 +47,6 @@ The IPython Shell can be embedded anywhe
+ You need to import the  `IPython` module and then add the following
+ lines wherver you want to embed the shell::
+ 
+-        embedshell = IPython.Shell.IPShellEmbed()
+-        embedshell()
++        IPython.frontend.terminal.embed.embed()
+ 
+ 

@@ -1,0 +1,5 @@
+?package(mayavi2): \
+        needs="X11" \
+        section="Applications/Science/Engineering" \
+        title="MayaVi2" \
+        command="/usr/bin/mayavi2"

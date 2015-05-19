@@ -1,0 +1,127 @@
+Description: Fixes for wxPython 3.0
+ Retains compatibility with 2.8 - there wx.InitAllImageHandlers() is a no-op,
+ wx.HIDE_READONLY is 0, and wx.PySimpleApp() issues a deprecation warning.
+Author: Olly Betts <olly@survex.com>
+Bug-Debian: https://bugs.debian.org/758939
+Forwarded: no
+Last-Update: 2014-09-20
+
+Index: mayavi2-4.3.1/tvtk/pyface/ui/wx/init.py
+===================================================================
+--- mayavi2-4.3.1.orig/tvtk/pyface/ui/wx/init.py
++++ mayavi2-4.3.1/tvtk/pyface/ui/wx/init.py
+@@ -22,10 +22,6 @@ if wx.VERSION < (2, 6):
+ _app = wx.GetApp()
+ 
+ if _app is None:
+-    _app = wx.PySimpleApp()
++    _app = wx.App(False)
+-
+-    # Before we can load any images we have to initialize wxPython's image
+-    # handlers.
+-    wx.InitAllImageHandlers()
+ 
+ #### EOF ######################################################################
+Index: mayavi2-4.3.1/tvtk/util/wx_gradient_editor.py
+===================================================================
+--- mayavi2-4.3.1.orig/tvtk/util/wx_gradient_editor.py
++++ mayavi2-4.3.1/tvtk/util/wx_gradient_editor.py
+@@ -392,7 +392,7 @@ class wxGradientEditorWidget(wx.Panel, G
+         (lookuptable) ``*.grad`` (gradient table for use with this program), 
+         and ``*.jpg`` (image of the gradient)
+         """
+-        dlg = wx.FileDialog(self, "Save LUT to...", style=wx.SAVE)
++        dlg = wx.FileDialog(self, "Save LUT to...", style=wx.FD_SAVE)
+         wildcard = "Gradient Files (.grad)|*.grad|"   \
+                    "All files (*.*)|*.*"
+         dlg.SetWildcard(wildcard)
+@@ -405,7 +405,7 @@ class wxGradientEditorWidget(wx.Panel, G
+         """
+         Load a ``*.grad`` lookuptable file using wxpython dialog
+         """
+-        style = wx.OPEN | wx.HIDE_READONLY
++        style = wx.FD_OPEN
+         dlg = wx.FileDialog(self, "Open a file", style=style)
+         wildcard = "Gradient Files (.grad)|*.grad|"   \
+                    "All files (*.*)|*.*"
+@@ -510,7 +510,7 @@ def main():
+         """If we had a vtk window running, update it here"""
+         print("Update Render Window")
+ 
+-    app = wx.PySimpleApp()
++    app = wx.App(False)
+     editor = wxGradientEditor(table,
+                               on_color_table_changed,
+                               colors=['rgb', 'a', 'h', 's', 'v'],
+Index: mayavi2-4.3.1/docs/source/mayavi/auto/wx_embedding.py
+===================================================================
+--- mayavi2-4.3.1.orig/docs/source/mayavi/auto/wx_embedding.py
++++ mayavi2-4.3.1/docs/source/mayavi/auto/wx_embedding.py
+@@ -60,7 +60,7 @@ class MainWindow(wx.Frame):
+                         kind='subpanel').control
+         self.Show(True)
+ 
+-app = wx.PySimpleApp()
++app = wx.App(False)
+ frame = MainWindow(None, wx.ID_ANY)
+ app.MainLoop()
+ 
+Index: mayavi2-4.3.1/docs/source/mayavi/auto/wx_mayavi_embed_in_notebook.py
+===================================================================
+--- mayavi2-4.3.1.orig/docs/source/mayavi/auto/wx_mayavi_embed_in_notebook.py
++++ mayavi2-4.3.1/docs/source/mayavi/auto/wx_mayavi_embed_in_notebook.py
+@@ -80,6 +80,6 @@ class MainWindow(wx.Frame):
+         self.Show(True)
+ 
+ if __name__ == '__main__':
+-    app = wx.PySimpleApp()
++    app = wx.App(False)
+     frame = MainWindow(None, wx.ID_ANY)
+     app.MainLoop()
+Index: mayavi2-4.3.1/examples/mayavi/interactive/wx_embedding.py
+===================================================================
+--- mayavi2-4.3.1.orig/examples/mayavi/interactive/wx_embedding.py
++++ mayavi2-4.3.1/examples/mayavi/interactive/wx_embedding.py
+@@ -60,7 +60,7 @@ class MainWindow(wx.Frame):
+                         kind='subpanel').control
+         self.Show(True)
+ 
+-app = wx.PySimpleApp()
++app = wx.App(False)
+ frame = MainWindow(None, wx.ID_ANY)
+ app.MainLoop()
+ 
+Index: mayavi2-4.3.1/examples/mayavi/interactive/wx_mayavi_embed_in_notebook.py
+===================================================================
+--- mayavi2-4.3.1.orig/examples/mayavi/interactive/wx_mayavi_embed_in_notebook.py
++++ mayavi2-4.3.1/examples/mayavi/interactive/wx_mayavi_embed_in_notebook.py
+@@ -80,6 +80,6 @@ class MainWindow(wx.Frame):
+         self.Show(True)
+ 
+ if __name__ == '__main__':
+-    app = wx.PySimpleApp()
++    app = wx.App(False)
+     frame = MainWindow(None, wx.ID_ANY)
+     app.MainLoop()
+Index: mayavi2-4.3.1/tvtk/pyface/ui/wx/wxVTKRenderWindowInteractor.py
+===================================================================
+--- mayavi2-4.3.1.orig/tvtk/pyface/ui/wx/wxVTKRenderWindowInteractor.py
++++ mayavi2-4.3.1/tvtk/pyface/ui/wx/wxVTKRenderWindowInteractor.py
+@@ -21,7 +21,7 @@ Creation:
+ 
+  wxVTKRenderWindowInteractor(parent, ID, stereo=0, [wx keywords]):
+ 
+- You should create a wx.PySimpleApp() or some other wx**App before
++ You should create a wx.App(False) or some other wx.App subclass before
+  creating the window.
+ 
+ Behaviour:
+@@ -695,7 +695,7 @@ def wxVTKRenderWindowInteractorConeExamp
+     """Like it says, just a simple example
+     """
+     # every wx app needs an app
+-    app = wx.PySimpleApp()
++    app = wx.App(False)
+ 
+     # create the top-level frame, sizer and wxVTKRWI
+     frame = wx.Frame(None, -1, "wxVTKRenderWindowInteractor", size=(400,400))

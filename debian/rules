@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+
+DEB_DESTDIR			 = $(CURDIR)/debian/mayavi2/
+JQUERY				 = /usr/share/javascript/jquery/jquery.js
+HTMLDOCS                         = /usr/share/doc/mayavi2/html/
+PYVERS                           = $(shell pyversions -r -v)
+PYINSTALL			 = /usr/lib/python2.7/dist-packages/
+
+%:
+	dh --with python2 $@
+
+override_dh_clean:
+	dh_clean
+	rm -rf ./mayavi/images/m2_about.jpg
+
+override_dh_install:
+	dh_install
+	dh_numpy
+	find $(DEB_DESTDIR) -name 'image_LICENSE.txt' -delete
+	find $(DEB_DESTDIR) -name '*.idx' -delete
+	find $(DEB_DESTDIR) -name 'jquery.js*' -delete
+	$(RM) $(DEB_DESTDIR)usr/share/doc/mayavi2/docs/mayavi2.man*
+	$(RM) $(DEB_DESTDIR)usr/share/doc/mayavi2/docs/html.zip
+	find  $(DEB_DESTDIR)usr/share/doc -name "*LICENSE*" -delete
+
+override_dh_installdeb:
+	# remove extraneous directories
+	for py in $(PYVERS); do\
+		rm -rf $(DEB_DESTDIR)/usr/lib/python$$py/dist-packages/examples;\
+		rm -rf $(DEB_DESTDIR)/usr/lib/python$$py/dist-packages/docs;\
+		rm -rf $(DEB_DESTDIR)/usr/lib/python$$py/dist-packages/integrationtests;\
+	done
+	dh_installdeb
+	chmod +x $(DEB_DESTDIR)/$(PYINSTALL)/mayavi/scripts/mayavi2.py
+	chmod -x $(DEB_DESTDIR)/$(PYINSTALL)/mayavi/tests/data/cellsnd.ascii.inp
+	dh_link $(PYINSTALL)/mayavi/scripts/mayavi2.py /usr/bin/mayavi2
+	dh_link $(JQUERY) /usr/share/doc/mayavi2/docs/build/mayavi/html/jquery.js
+	dh_link $(JQUERY) /usr/share/doc/mayavi2/docs/build/tvtk/html/jquery.js
+
+get-orig-source:
+	-uscan --force-download --rename

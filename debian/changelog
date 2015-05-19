@@ -1,0 +1,317 @@
+mayavi2 (4.4.1-1+c9+1) calibre9; urgency=low
+
+  * New upstream version.
+
+ -- Alexis Bezverkhyy <alexis-externe.bezverkhyy@edf.fr>  Tue, 19 May 2015 11:17:22 +0200
+
+mayavi2 (4.3.1-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload with maintainer's permission.
+  * Update for wxpython3.0 (Closes: #758939):
+    + New patch: wxpy3.0-compat.patch
+
+ -- Olly Betts <olly@survex.com>  Tue, 07 Oct 2014 06:40:35 +0000
+
+mayavi2 (4.3.1-3) unstable; urgency=medium
+
+  * d/rules: remove references to pyshared (Closes: #746762)
+
+ -- Varun Hiremath <varun@debian.org>  Tue, 17 Jun 2014 02:37:52 -0400
+
+mayavi2 (4.3.1-2) unstable; urgency=low
+
+  [ Varun Hiremath ]
+  * New upstream release
+  * d/rules: Add missing jquery.js links (Closes: #678051)
+  * Bump Standards-Version to 3.9.5
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 16 Mar 2014 00:01:01 -0400
+
+mayavi2 (4.1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump Standards-Version to 3.9.3
+
+ -- Varun Hiremath <varun@debian.org>  Mon, 23 Apr 2012 16:36:45 -0400
+
+mayavi2 (4.0.0-3) unstable; urgency=low
+
+  * d/control: Add version depends on python-apptools (Closes: #633992)
+  * d/rules: Remove extraneous directories from installing (Closes: #649906)
+  * Add patches/ipython.diff to updated docs to IPython 0.11 (Closes: #636465)
+  * Add patches/help.diff to fix mayavi2 html documentation directory
+
+ -- Varun Hiremath <varun@debian.org>  Thu, 08 Dec 2011 20:40:04 -0500
+
+mayavi2 (4.0.0-2) unstable; urgency=low
+
+  * Team upload
+  * Boosted X-Python-Version to 2.7 to avoid FTBFS and "fails to install"
+    on wheezy and sid which have python 2.7 as the default now and
+    python-vtk providing bindings only for 2.7 (Closes: #645136)
+
+ -- Yaroslav Halchenko <debian@onerussian.com>  Wed, 12 Oct 2011 23:22:50 -0400
+
+mayavi2 (4.0.0-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control:
+    - Bump Standards-Version to 3.9.2
+    - Set X-Python-Version: 2.6, fixes FTBFS (Closes: #625148)
+    - Update Depends
+  * Update debian/watch file
+  * Cleanup debian/rules file
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 09 Jul 2011 01:18:36 -0400
+
+mayavi2 (3.4.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Convert to dh_python2 (Closes: #616884)
+  * Convert from cdbs to debhelper
+
+ -- Varun Hiremath <varun@debian.org>  Wed, 06 Apr 2011 22:14:48 -0400
+
+mayavi2 (3.4.0-2) unstable; urgency=low
+
+  * d/control: remove dependency on libvtk* (Closes: #618666)
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 03 Apr 2011 13:09:39 -0400
+
+mayavi2 (3.4.0-1) experimental; urgency=low
+
+  * New upstream release
+    - Fixes Python string exceptions (Closes: #528392)
+  * d/copyright: Fix BSD license references
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 17 Oct 2010 22:39:47 -0400
+
+mayavi2 (3.3.2-3) unstable; urgency=low
+
+  * Build-Depend on versioned python-numpy (>= 1:1.4.1-4~).
+    Fixes FTBFS (Closes: #590944)
+
+ -- Varun Hiremath <varun@debian.org>  Fri, 30 Jul 2010 11:48:45 -0400
+
+mayavi2 (3.3.2-2) unstable; urgency=low
+
+  * debian/rules: Add call to dh_numpy to generate stricter versioned
+    depends on python-numpy (Closes: #590750)
+  * Bump Standards-Version to 3.9.1
+
+ -- Varun Hiremath <varun@debian.org>  Thu, 29 Jul 2010 22:04:27 -0400
+
+mayavi2 (3.3.2-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control:
+    - Add versioned depends on python-vtk (>= 5.4.2-5) (Closes: #550635)
+
+ -- Varun Hiremath <varun@debian.org>  Thu, 03 Jun 2010 01:57:56 -0400
+
+mayavi2 (3.3.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove patches/* -- all merged upstream
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 28 Feb 2010 14:50:10 -0500
+
+mayavi2 (3.3.0-2) unstable; urgency=low
+
+  [ Sandro Tosi ]
+  * debian/control
+    - removed Ondrej from Uploaders: thanks for your work!
+
+  [ Varun Hiremath ]
+  * debian/control:
+    - Depends: replace libvtk5.2 with libvtk5.4 (Closes: #568471)
+    - Bump Standards-Version to 3.8.4
+  * debian/patches:
+    - Remove wxversion.diff -- merged upstream
+  * Switch to source format 3.0 (quilt)
+    - Add source/format file
+  * debian/rules:
+    - Remove references to quilt, not needed anymore
+    - Remove PYTHONPATH, python-vtk bug #529961 fixed now
+
+ -- Varun Hiremath <varun@debian.org>  Fri, 05 Feb 2010 23:49:39 -0500
+
+mayavi2 (3.3.0-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control: Add ipython to Suggests
+  * debian/rules: fix build process by adding a workaround for
+    m2_about.jpg image created before build
+  * Add patches/build_doc.diff to fix documentation generation
+
+ -- Varun Hiremath <varun@debian.org>  Tue, 21 Jul 2009 23:53:52 -0400
+
+mayavi2 (3.2.0-3) unstable; urgency=low
+
+  * Create symlinks to html docs in /usr/share/doc (Closes: #534496)
+
+ -- Varun Hiremath <varun@debian.org>  Wed, 24 Jun 2009 22:31:48 -0400
+
+mayavi2 (3.2.0-2) unstable; urgency=low
+
+  [ Marco Rodrigues ]
+  * Bump Standards-Version to 3.8.1 (no changes).
+  * debian/control:
+    + Change libvtk5 Depends to libvtk5.2 (Closes: #530476).
+    + Remove version check in python-vtk at Depends.
+  * Remove myself from Uploaders.
+
+  [ Varun Hiremath ]
+  * debian/rules: Reset PYTHONPATH as a temporary fix for bug in
+    python-vtk #529961, which fixes FTBFS (Closes: #533946)
+  * Add patches/manpage.diff to fix a lintian warning
+  * Add patches/wxversion.diff to set the default wx version to 2.8
+    (Closes: #478870)
+
+ -- Varun Hiremath <varun@debian.org>  Wed, 24 Jun 2009 05:43:17 -0400
+
+mayavi2 (3.2.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Varun Hiremath <varun@debian.org>  Fri, 27 Mar 2009 04:34:55 -0400
+
+mayavi2 (3.1.0-2) unstable; urgency=low
+
+  * Add versioned depends on python-vtk (>= 5.2) and libvtk5 (>= 5.2)
+  * Fixes version mismatch between tvtk and vtk (Closes: #519783)
+
+ -- Varun Hiremath <varun@debian.org>  Mon, 16 Mar 2009 00:38:26 -0400
+
+mayavi2 (3.1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control: add python-setupdocs to Build-Depends
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 28 Dec 2008 22:17:30 -0500
+
+mayavi2 (3.0.3-1) experimental; urgency=low
+
+  [ Marco Rodrigues ]
+  * debian/control:
+    + Fix Homepage field to the new URL.
+
+  [ Varun Hiremath ]
+  * New upstream release (Closes: #499580)
+    + Fixes bugs (Closes: #481839, #489781, #487853)
+  * Upstream source split into many sub-packages
+  * debian/control: add python-envisagecore, python-envisageplugins,
+    python-apptools, libjs-jquery, python-configobj to Depends
+  * Switch to python-wxgtk2.8 (Closes: #477986)
+  * Update debian/watch and debian/orig-tar.sh files
+  * Clean up debian/rules file
+
+  [ Sandro Tosi ]
+  * debian/control
+    - switch Vcs-Browser field to viewsvn
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 06 Dec 2008 19:50:11 -0500
+
+mayavi2 (2.2.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove all patches; merged upstream
+  * Add manpage for tvtk_doc
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 12 Jul 2008 01:11:59 +0530
+
+mayavi2 (2.1.1-5) unstable; urgency=low
+
+  * Add ExtractVectorComponent.diff patch (Closes: #479448)
+  * Add SelectOutputFilter.diff patch (Closes: #478359)
+  * Bump Standards-Version to 3.8.0
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 21 Jun 2008 21:34:22 +0530
+
+mayavi2 (2.1.1-3) unstable; urgency=low
+
+  * Add plot3d_reader.diff patch from upstream, fixes issues with reading
+    plot3d data files.
+
+ -- Varun Hiremath <varun@debian.org>  Tue, 13 May 2008 17:58:35 +0530
+
+mayavi2 (2.1.1-2) unstable; urgency=low
+
+  * Change Build-Depends: python-central (>= 0.6.0) (Closes: #472032)
+  * debian/rules: Switch to new directory structure of python-central
+
+ -- Varun Hiremath <varun@debian.org>  Sun, 23 Mar 2008 11:11:49 +0530
+
+mayavi2 (2.1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Varun Hiremath <varun@debian.org>  Mon, 10 Mar 2008 13:19:01 +0530
+
+mayavi2 (2.1.0-1) unstable; urgency=low
+
+  * New upstream release
+    + Fixes full screen segfaults (Closes: #464692)
+  * debian/control:
+    + Depends: replace python-setuptools with python-pkg-resources
+    (Closes: #468729)
+
+ -- Varun Hiremath <varun@debian.org>  Sat, 01 Mar 2008 21:27:07 +0530
+
+mayavi2 (2.0.2a1-4) unstable; urgency=low
+
+  * Add python-setuptools to Depends (Closes: #461057)
+
+ -- Varun Hiremath <varun@debian.org>  Wed, 16 Jan 2008 17:37:04 +0530
+
+mayavi2 (2.0.2a1-3) unstable; urgency=low
+
+  * debian/control:
+    + Add ${shlibs:Depends}, ${misc:Depends} to Depends
+    + Add python-numpy, python-vtk to Depends
+    + Move python-scipy to Suggests from Depends
+
+ -- Varun Hiremath <varun@debian.org>  Mon, 14 Jan 2008 23:21:19 +0530
+
+mayavi2 (2.0.2a1-2) unstable; urgency=low
+
+  [ Varun Hiremath ]
+  * Initial release (Closes: #453907)
+  * debian/control:
+    + Add myself to Uploaders
+    + Depends: fix python-ets-traits, python-ets-traits-ui version
+    + Remove version check from dependencies
+    + Change section to science
+  * debian/rules:
+    + add clean target
+    + fix executable permissions of some files
+    + install using setup files.
+  * Install upstream provided manpage.
+  * Install examples and docs.
+  * Add debain/orig-tar.sh to create orig.tar.gz
+  * Update debian/copyright file
+  * Add debian/README.Debian-source file
+  * Add mayavi2 menu file
+
+  [ Kumar Appaiah ]
+  * Build-Depend on python-vtk (>= 5.0.3-1) instead of 5.0.3-1+b1.
+
+  [ Marco Rodrigues ]
+  * Update Standards-Version to 3.7.3.
+
+ -- Varun Hiremath <varun@debian.org>  Wed, 09 Jan 2008 11:13:33 +0530
+
+mayavi2 (2.0.2a1-1) UNRELEASED; urgency=low
+
+  [ Ondrej Certik ]
+  * First unnofficial package revision.
+
+  [ Marco Rodrigues ]
+  * Add short and long Description in control file.
+  * Add version check to cdbs, debhelper and python-central (Python Policy).
+  * Fix watch file.
+
+ -- Ondrej Certik <ondrej@certik.cz>  Mon, 08 Oct 2007 20:39:20 +0200

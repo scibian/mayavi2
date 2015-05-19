@@ -1,0 +1,14 @@
+Index: mayavi2-4.0.0/mayavi/action/help.py
+===================================================================
+--- mayavi2-4.0.0.orig/mayavi/action/help.py	2011-12-08 20:35:30.000000000 -0500
++++ mayavi2-4.0.0/mayavi/action/help.py	2011-12-08 20:38:33.000000000 -0500
+@@ -25,7 +25,8 @@
+ # standard place.  If that directory doesn't exist, assume you
+ # are running from the source.
+ local_dir = dirname(mayavi.api.__file__)
+-HTML_DIR = join(local_dir, 'html')
++# Varun Hiremath: set debian mayavi2 html docs directory
++HTML_DIR='/usr/share/doc/mayavi2/docs/build/mayavi/html'
+ if not path.exists(HTML_DIR):
+     HTML_DIR = join(dirname(dirname(local_dir)),
+                                     'build', 'docs', 'html', 'mayavi')
